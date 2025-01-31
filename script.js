@@ -540,88 +540,6 @@ function updatePrice(price, type) {
 }
 
 // 修改加载订单列表函数
-async function loadProfileOrders() {
-    const profileSection = document.getElementById('profile');
-    if (!profileSection) {
-        console.error('找不到个人中心区域');
-        return;
-    }
-
-    try {
-        const currentUser = AV.User.current();
-        if (!currentUser) {
-            window.location.hash = '#home';
-            showToast('请先登录');
-            return;
-        }
-
-        // 重新获取最新的用户信息
-        await currentUser.fetch();  // 添加这行来获取最新的用户数据
-
-        // 调整板块顺序，将个人信息放到最后
-        profileSection.innerHTML = `
-            <div class="profile-main">
-                <div class="profile-card">
-                    <div class="profile-section">
-                        <h3>我的订单</h3>
-                        <div class="order-list"></div>
-                        <div class="pagination">
-                            <button class="prev-page" onclick="changePage(currentOrderPage - 1)">上一页</button>
-                            <span class="page-info">第1页</span>
-                            <button class="next-page" onclick="changePage(currentOrderPage + 1)">下一页</button>
-                        </div>
-                    </div>
-
-                    <div class="profile-section">
-                        <h3>收货信息</h3>
-                        <div class="shipping-info">
-                            <p>默认收货人：<span id="shipping-name">${currentUser.get('defaultShippingName') || '未设置'}</span></p>
-                            <p>默认联系电话：<span id="shipping-phone">${currentUser.get('defaultShippingPhone') || '未设置'}</span></p>
-                            <p>默认收货地址：<span id="shipping-address">${currentUser.get('defaultShippingAddress') || '未设置'}</span></p>
-                        </div>
-                        <div class="shipping-info-edit">
-                            <button class="edit-shipping-btn" onclick="showEditShippingModal()">
-                                <i class="fas fa-edit"></i> 编辑收货信息
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="profile-section">
-                        <h3>个人信息</h3>
-                        <div class="profile-info">
-                            <p>用户名：<span id="profile-username">${currentUser.get('username') || '未设置'}</span></p>
-                            <p>邮箱：<span id="profile-email">${currentUser.get('email')}</span></p>
-                            <p>注册时间：<span id="profile-created">${currentUser.get('createdAt').toLocaleString()}</span></p>
-                        </div>
-                        <div class="profile-actions">
-                            <button class="profile-logout-btn" onclick="handleLogout()">退出登录</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        // 加载订单列表
-        await loadFilteredOrders();
-
-    } catch (error) {
-        console.error('加载个人中心失败:', error);
-        profileSection.innerHTML = '<p class="error-message">加载失败，请刷新重试</p>';
-    }
-}
-
-// 修改空订单显示
-function showEmptyOrders(orderList) {
-    orderList.innerHTML = `
-            <div class="empty-orders">
-            <i class="fas fa-box-open"></i>
-            <p>您还没有订单</p>
-            <a href="#products" class="shop-now-btn">去选购</a>
-            </div>
-        `;
-}
-
-// 修改加载订单函数
 async function loadFilteredOrders() {
     const orderList = document.querySelector('.order-list');
     if (!orderList) {
@@ -635,6 +553,9 @@ async function loadFilteredOrders() {
             orderList.innerHTML = '<p class="no-orders">请先登录</p>';
             return;
         }
+
+        // 显示加载状态
+        orderList.innerHTML = '<div class="loading-spinner">加载中...</div>';
 
         // 创建基础查询
         const query = new AV.Query('Order');
@@ -658,7 +579,6 @@ async function loadFilteredOrders() {
         const orders = await query.find();
         
         // 更新订单列表
-        orderList.innerHTML = '';
         if (totalOrders === 0) {
             showEmptyOrders(orderList);
             // 隐藏分页控件
@@ -675,7 +595,8 @@ async function loadFilteredOrders() {
             paginationDiv.style.display = 'flex';
         }
         
-        // 添加订单卡片
+        // 清空订单列表并添加新的订单卡片
+        orderList.innerHTML = '';
         orders.forEach(order => {
             const orderCard = createOrderCard(order);
             orderList.appendChild(orderCard);

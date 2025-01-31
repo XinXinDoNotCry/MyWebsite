@@ -2146,4 +2146,70 @@ main {
     background-color: var(--accent-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* 登录注册模态框样式 */
+.modal .modal-content form input,
+.modal .modal-content form textarea,
+.modal .modal-content form select,
+#loginForm input,
+#registerForm input {
+    width: 100% !important;
+    padding: 0.8rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 1.1rem !important;
+    font-family: 'ZCOOL KuaiLe', cursive !important;
+    transition: all 0.3s ease !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+.modal .modal-content form input:focus,
+.modal .modal-content form textarea:focus,
+.modal .modal-content form select:focus,
+#loginForm input:focus,
+#registerForm input:focus {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1) !important;
+}
+
+/* 确保输入框的占位符文本也使用相同字体 */
+.modal .modal-content form input::placeholder,
+.modal .modal-content form textarea::placeholder,
+.modal .modal-content form select::placeholder,
+#loginForm input::placeholder,
+#registerForm input::placeholder {
+    font-family: 'ZCOOL KuaiLe', cursive !important;
+    color: #999 !important;
+}
+
+/* 加载中动画样式 */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: var(--primary-color);
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.2rem;
+}
+
+.loading-spinner::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border: 2px solid var(--primary-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 } 
