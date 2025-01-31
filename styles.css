@@ -1,0 +1,2149 @@
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=ZCOOL+XiaoWei&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 基础样式优化 */
+:root {
+    --primary-color: #d4b98c;
+    --secondary-color: #2c3e50;
+    --accent-color: #8b4513;
+    --background-color: #f9f6f2;
+    --text-color: #333;
+    --modal-bg: rgba(0, 0, 0, 0.5);
+    --modal-content-bg: #fff;
+}
+
+body {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    line-height: 1.6;
+    font-size: 18px;
+    background-color: #faf7f2;
+    color: var(--text-color);
+}
+
+/* LOGO样式 */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.logo-text {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.logo-slogan {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+/* 导航栏样式优化 */
+header {
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.4rem 1rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 2.5rem;
+}
+
+nav ul li {
+    margin: 0;
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+/* 导航栏认证按钮样式 */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    min-width: 140px;
+    justify-content: center;
+    height: 45px;
+}
+
+.guest-buttons, .user-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 100%;
+}
+
+/* 导航链接样式 */
+nav ul li a,
+.guest-buttons .nav-link,
+.user-buttons .nav-link {
+    color: var(--primary-color);
+    font-weight: 500;
+    position: relative;
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1.6;
+    height: 45px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+/* 添加下划线动画效果 */
+nav ul li a::after,
+.guest-buttons .nav-link::after,
+.user-buttons .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after,
+.guest-buttons .nav-link:hover::after,
+.user-buttons .nav-link:hover::after,
+.guest-buttons .nav-link.active::after,
+.user-buttons .nav-link.active::after {
+    width: 100%;
+}
+
+/* Hero区域样式优化 */
+.hero {
+    background-size: cover !important;
+    background-position: center !important;
+    color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 1rem 2rem 3rem;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.products {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-card button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 25px;
+    width: 80%;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.product-card button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* 空购物车样式 */
+.empty-cart {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-color);
+}
+
+.empty-cart i {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.empty-cart p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.empty-cart .shop-now-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 45px;
+    margin-top: 1rem;
+}
+
+.empty-cart .shop-now-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.floating-emoji {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    animation: float 0.8s ease-out forwards;
+    user-select: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--moveX), var(--moveY)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.5rem;
+    }
+    
+    .logo-slogan {
+        display: none;
+    }
+    
+    nav {
+        padding: 0.5rem;
+    }
+    
+    body {
+        font-size: 16px;
+    }
+    
+    .product-category h3 {
+        font-size: 1.8rem;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* 内容区域样式 */
+.section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease-out;
+    background-color: transparent;
+    position: relative;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.section.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* 确保其他页面的商品容器完全隐藏 */
+#contact.section:not(.active),
+#profile.section:not(.active),
+#cart.section:not(.active) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    pointer-events: none !important;
+    z-index: -1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#cart.section.active {
+    animation: slideInFromRight 0.5s ease-out;
+}
+
+/* 修改主要内容区域的样式 */
+main {
+    margin-top: 80px;
+    margin-bottom: 100px;
+    min-height: calc(100vh - 180px);
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden; /* 防止内容溢出 */
+}
+
+/* 联系我们页面样式 */
+.contact-container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+.contact-info {
+    margin-top: 2rem;
+}
+
+.contact-info p {
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-info i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    width: 90%;
+    max-width: 400px;
+    margin: 15vh auto;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-content .order-details {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.modal-content .order-details h3 {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.modal-content .order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-content .order-total {
+    text-align: right;
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.modal-content .payment-methods {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.modal-content .payment-method {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-content .action-buttons button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    padding: 5px;
+    line-height: 1;
+}
+
+.close:hover {
+    color: var(--accent-color);
+}
+
+/* 错误消息样式 */
+.error-message {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    min-height: 20px;
+}
+
+/* 登录成功提示样式 */
+.success-message {
+    color: #28a745;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* 添加切换动画 */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 添加登录注册按钮样式 */
+.login-btn,
+.register-btn,
+.logout-btn {
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.user-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 150px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.username {
+    display: none;
+}
+
+/* 图片展示区域样式 */
+.gallery-section {
+    padding: 3rem 2rem;
+    background-color: transparent;
+}
+
+.gallery-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 商品分类样式 */
+.product-category {
+    margin-bottom: 4rem;
+}
+
+.product-category h3 {
+    color: var(--secondary-color);
+    font-size: 2.2rem;
+    margin: 2rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.product-category h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 1rem auto;
+}
+
+/* 价格选择器样式 */
+.price-select {
+    margin: 1rem 0;
+    text-align: left;
+    padding: 0 1rem;
+}
+
+.price-select label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.price-select select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    background-color: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+/* 数量选择器样式 */
+.quantity-select {
+    margin: 1rem 0;
+    text-align: left;
+    padding: 0 1rem;
+}
+
+.quantity-select label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+.quantity-select .quantity-controls {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+    justify-content: center;
+    height: 40px;
+}
+
+.quantity-select .quantity-controls button,
+.quantity-select .quantity-controls input {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.quantity-select .quantity-controls button {
+    padding: 0 0.8rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    min-width: 45px;
+}
+
+.quantity-select .quantity-controls input {
+    width: 100px;
+    padding: 0 0.5rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
+
+/* 修改总价显示样式 */
+#total-price-gaoliang,
+#total-price-guzi {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 2.5rem 0 1.5rem 0;
+    padding: 1rem;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+    background-color: #fafafa;
+    border-radius: 4px;
+}
+
+/* 定制加工卡片样式 */
+.custom-details {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+/* 修改价格面议样式 */
+.custom-price {
+    color: #8B4513;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+    text-align: center;
+    padding: 0.8rem;
+    background: linear-gradient(to right, transparent, #f9f6f2, transparent);
+    text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.2);
+    letter-spacing: 2px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.custom-price::before,
+.custom-price::after {
+    content: '✦';
+    margin: 0 10px;
+    color: #d4b98c;
+}
+
+/* 修改商品卡片标题样式 */
+.product-card h3 {
+    font-size: 1.8rem;  /* 增大标题字体 */
+    color: var(--secondary-color);
+    margin: 1.2rem 0;  /* 调整上下间距 */
+    font-weight: bold;
+}
+
+/* 商品图片区域样式 */
+.product-image {
+    font-size: 2rem;  /* 恢复字体大小 */
+    color: var(--secondary-color);
+    padding: 2rem 1rem;
+    background-color: #f9f6f2;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* 添加谷歌登录按钮样式 */
+.social-login {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.google-btn {
+    background-color: #fff !important;
+    color: #757575 !important;
+    border: 1px solid #ddd !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.1rem !important;
+    font-family: 'ZCOOL KuaiLe', cursive !important;
+    padding: 0.8rem !important;
+}
+
+.google-btn:hover {
+    background-color: #f5f5f5 !important;
+}
+
+.google-btn i {
+    color: #4285f4;
+    font-size: 1.2rem;
+}
+
+/* 个人中心样式 */
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profile-container h2 {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.profile-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.profile-header i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.profile-header h3 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.profile-info p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.profile-info strong {
+    color: var(--secondary-color);
+    margin-right: 0.5rem;
+}
+
+.profile-orders {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.order-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.order-item h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.order-item p {
+    color: var(--text-color);
+    margin: 0.3rem 0;
+}
+
+.order-item .order-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.order-item .order-status {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.order-status.pending {
+    background-color: #ffeeba;
+    color: #856404;
+}
+
+.order-status.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.order-status.cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* 添加空订单样式 */
+.empty-orders {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.empty-orders i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.empty-orders p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 个人中心按钮容器样式 */
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+/* 统一按钮样式 */
+.shop-now-btn, .profile-logout-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 45px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.shop-now-btn:hover, .profile-logout-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* 添加导航栏活动状态下划线 */
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 待购页面样式优化 */
+#cart.section {
+    background-color: white;
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    display: block !important;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    animation: slideInFromRight 0.5s ease-out;
+}
+
+/* 隐藏其他页面的商品容器 */
+#profile .cart-container,
+#profile .cart-list,
+#profile .cart-item,
+#profile .cart-total,
+#profile .submit-order,
+#profile .quantity-controls,
+#profile .remove-btn {
+    display: none !important;
+}
+
+/* 确保商品容器只在待购页面显示 */
+.cart-container,
+.cart-list,
+.cart-item,
+.cart-total,
+.submit-order,
+.quantity-controls,
+.remove-btn {
+    display: none;
+}
+
+#cart .cart-container {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 400px;
+}
+
+/* 商品列表区域 */
+#cart .cart-list {
+    display: block !important;
+    flex: 1;
+    background: #fff;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* 商品项样式 */
+#cart .cart-item {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.8rem;
+    margin: 1rem 0;
+    background: #fff;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    font-size: 1.3rem;
+}
+
+/* 总计区域 */
+#cart .cart-total {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+    margin: 2rem auto;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    font-size: 2.2rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* 移除单独的 total-amount 类，因为我们直接在父元素上设置样式 */
+#cart .cart-total span {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+    font-weight: inherit;
+}
+
+/* 提交订单按钮区域 */
+#cart .submit-order {
+    display: flex !important;
+    justify-content: center;
+    padding: 1.5rem 0;
+    margin-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+#cart .submit-order-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background: var(--accent-color);
+    color: white;
+    padding: 1.2rem 3.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+    min-width: 250px;
+}
+
+#cart .submit-order-btn:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+}
+
+/* 保留其他必要的样式 */
+.quantity-controls {
+    display: flex !important;
+    align-items: center;
+    gap: 0.8rem;
+    margin-left: auto;
+    background: #f8f8f8;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.remove-btn {
+    background: transparent !important;
+    color: #999;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.1rem;
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1rem;
+    transition: all 0.2s ease;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    #cart .cart-item {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .quantity-controls {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+    
+    .remove-btn {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+    }
+}
+
+/* 添加空购物车样式 */
+.empty-cart {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-color);
+}
+
+.empty-cart i {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.empty-cart p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.empty-cart .shop-now-btn {
+    padding: 1.2rem 3rem;
+    font-size: 1.3rem;
+}
+
+/* 添加成功提示样式 */
+.toast-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease-out forwards;
+    z-index: 9999;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.3rem;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 优化数量控制按钮 */
+#cart .quantity-controls {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8f8f8;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+#cart .quantity-controls button {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: white;
+    color: var(--accent-color);
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+#cart .quantity-controls button:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+#cart .quantity-controls input {
+    width: 60px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    background: white;
+    margin: 0 0.5rem;
+}
+
+/* 优化删除按钮 */
+#cart .remove-btn {
+    background: #fff2f2 !important;
+    color: #ff4d4f;
+    border: 1px solid #ffccc7;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.1rem;
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1rem;
+    transition: all 0.2s ease;
+}
+
+#cart .remove-btn:hover {
+    background: #fff1f0 !important;
+    color: #ff7875;
+    border-color: #ff7875;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(255, 77, 79, 0.2);
+}
+
+#cart .remove-btn i {
+    font-size: 1.2rem;
+}
+
+/* 待购页面标题 */
+#cart h2 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* 移除标题下划线 */
+#cart h2::after {
+    display: none;
+}
+
+/* 订单表单样式 */
+#order-modal .modal-content {
+    max-width: 800px;
+    width: 95%;
+    margin: 10vh auto;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+#order-modal h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+    text-align: center;
+    font-size: 1.8rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+#order-form .form-group {
+    margin-bottom: 2rem;
+}
+
+#order-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-size: 1.3rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+#order-form input,
+#order-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    transition: border-color 0.3s ease;
+    margin-top: 0.3rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+#order-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#order-form input:focus,
+#order-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.order-summary {
+    margin: 2.5rem -1rem;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.order-summary h4 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+#order-items {
+    margin-bottom: 1rem;
+}
+
+#order-items .order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.4rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+#order-total {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-align: right;
+    margin: 1.5rem 0;
+    padding: 1.5rem 0;
+    border-top: 2px solid #eee;
+}
+
+/* 订单明细中的总计金额 */
+.order-summary .order-total {
+    font-size: 2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-top: 1.5rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+/* 订单明细中的商品项 */
+.order-summary .order-item {
+    font-size: 1.4rem;
+    padding: 1rem 0;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+/* 支付方式选择样式 */
+.payment-methods {
+    margin: 2rem -1rem;
+    padding: 1.5rem 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.payment-methods h4 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.payment-options {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.payment-option {
+    flex: 1;
+    min-width: 180px;
+    max-width: 250px;
+    padding: 1.2rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.payment-option:hover {
+    border-color: var(--primary-color);
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.payment-option input[type="radio"]:checked + .payment-icon + .payment-name {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.payment-option input[type="radio"]:checked + .payment-icon {
+    color: var(--primary-color);
+}
+
+.payment-icon {
+    font-size: 1.8rem;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.payment-name {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.submit-btn,
+.cancel-btn {
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.submit-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    border: 1px solid #ddd;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.cancel-btn:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+}
+
+/* 订单列表样式 */
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.order-card {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    padding: 1.8rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 185, 140, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.order-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(212, 185, 140, 0.2);
+    margin-bottom: 1rem;
+}
+
+.order-id {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.order-id::before {
+    content: '📦';
+    font-size: 1.3rem;
+}
+
+.order-status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.status-pending {
+    background: linear-gradient(145deg, #fff7e6, #fff3cd);
+    color: #8B4513;
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.order-items {
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.2rem;
+}
+
+.order-item:hover {
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.item-name {
+    flex: 1;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    padding-left: 0.5rem;
+    border-left: 3px solid var(--primary-color);
+}
+
+.item-quantity {
+    background: rgba(212, 185, 140, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin: 0 1.5rem;
+}
+
+.item-price {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(212, 185, 140, 0.2);
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.order-time {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.order-time::before {
+    content: '🕒';
+}
+
+.order-total {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.order-total::before {
+    content: '总计:';
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    font-weight: normal;
+}
+
+.order-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.view-detail-btn,
+.pay-now-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'ZCOOL KuaiLe', cursive !important;
+}
+
+.view-detail-btn {
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    color: var(--secondary-color);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.pay-now-btn {
+    background: linear-gradient(145deg, var(--primary-color), var(--accent-color));
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+}
+
+.view-detail-btn:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.pay-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+}
+
+/* 分页控件样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #dee2e6;
+    background: white;
+    color: var(--primary-color);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.1rem;
+}
+
+.pagination button:disabled {
+    background: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+.pagination button:not(:disabled):hover {
+    background: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.page-info {
+    color: #6c757d;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.1rem;
+}
+
+/* 支付状态模态框样式 */
+.payment-content {
+    max-width: 500px;
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.payment-status {
+    text-align: center;
+    padding: 2rem;
+}
+
+.payment-qrcode {
+    margin: 2rem auto;
+    width: 200px;
+    height: 200px;
+    background: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.payment-info {
+    margin: 2rem 0;
+}
+
+.payment-info p {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.payment-amount {
+    font-size: 2rem !important;
+    color: var(--accent-color) !important;
+    font-weight: bold;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.payment-order-id {
+    color: #666 !important;
+    font-size: 1.1rem !important;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.payment-tip {
+    color: #666;
+    margin-top: 1rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.payment-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.check-payment-btn,
+.cancel-payment-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.check-payment-btn {
+    background-color: var(--primary-color);
+    color: white;
+    min-width: 150px;
+}
+
+.cancel-payment-btn {
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    border: 1px solid #ddd;
+    min-width: 120px;
+}
+
+.check-payment-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.cancel-payment-btn:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.check-payment-btn i {
+    font-size: 1.2rem;
+}
+
+/* 支付成功动画 */
+@keyframes checkmark {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.payment-success {
+    color: #28a745;
+    font-size: 4rem;
+    animation: checkmark 0.5s ease-in-out forwards;
+}
+
+/* 支付模态框标题 */
+#payment-modal h3 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 1rem;
+}
+
+/* 收货信息编辑按钮样式 */
+.shipping-info-edit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.edit-shipping-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.edit-shipping-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* 收货信息编辑模态框样式 */
+.shipping-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.shipping-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.shipping-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.shipping-form input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.shipping-form input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.shipping-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.shipping-form-actions button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    transition: all 0.3s ease;
+}
+
+.save-shipping-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.cancel-shipping-btn {
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    border: 1px solid #ddd;
+}
+
+.save-shipping-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* 登录注册表单样式 */
+#loginForm,
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+#loginForm .form-group,
+#registerForm .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#loginForm input,
+#registerForm input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+#loginForm input:focus,
+#registerForm input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(212, 185, 140, 0.2);
+    outline: none;
+}
+
+/* 登录注册模态框按钮样式 */
+.modal-content form button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.modal-content form button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+} 

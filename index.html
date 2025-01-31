@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问道酒坊 - 品味人生</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 添加Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 添加FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- LeanCloud SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.15.0/dist/av-min.js"></script>
+    <!-- QRCode.js -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <!-- 初始化 LeanCloud -->
+    <script>
+        // LeanCloud 配置
+        AV.init({
+            appId: "4Na9hFq3hmvskpzN5f4ScDrD-gzGzoHsz",
+            appKey: "94ZxCP9PxFTF2wNi3nISSQoc",
+            serverURL: "https://4na9hfq3.lc-cn-n1-shared.com"
+        });
+    </script>
+    <!-- 确保在 LeanCloud 初始化后加载 -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-text">问道酒坊</span>
+                <span class="logo-slogan">品味人生 · 道法自然</span>
+            </div>
+            <ul>
+                <li><a href="#home" class="nav-link active">首页</a></li>
+                <li><a href="#products" class="nav-link">商品</a></li>
+                <li class="auth-buttons">
+                    <div class="guest-buttons">
+                        <a class="nav-link login-btn">登录</a>
+                        <a class="nav-link register-btn">注册</a>
+                    </div>
+                    <div class="user-buttons" style="display: none;">
+                        <a href="#cart" class="nav-link">待购</a>
+                        <a href="#profile" class="nav-link" id="profile-link">个人</a>
+                    </div>
+                </li>
+                <li><a href="#contact" class="nav-link">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="section active">
+            <div class="hero" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/show1.jpg');">
+                <div class="hero-content">
+                    <h1>传 承 千 年 匠 心</h1>
+                    <p>以道法自然之心，酿造生活之美</p>
+                    <a href="#products" class="cta-button">浏览商品</a>
+                </div>
+            </div>
+            
+            <!-- 修改图片展示区域 -->
+            <div class="gallery-section">
+                <h2>酒坊掠影</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="images/show2.jpg" alt="问道酒坊展示图2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/show3.jpg" alt="问道酒坊展示图3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/show4.jpg" alt="问道酒坊展示图4">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/show5.jpg" alt="问道酒坊展示图5">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/LOGO.png" alt="问道酒坊LOGO">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/show6.jpg" alt="问道酒坊展示图6">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/show7.jpg" alt="问道酒坊展示图7">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/show8.jpg" alt="问道酒坊展示图8">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/show9.jpg" alt="问道酒坊展示图9">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="section">
+            <!-- 散装白酒 -->
+            <div class="product-category">
+                <h3>散装白酒</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">高粱酒</div>
+                        <h3>选择规格</h3>
+                        <div class="price-select">
+                            <label for="price-gaoliang">选择价格（元/斤）：</label>
+                            <select id="price-gaoliang" onchange="updatePrice(this.value, 'gaoliang')">
+                                <option value="10">10元/斤</option>
+                                <option value="20">20元/斤</option>
+                                <option value="30">30元/斤</option>
+                                <option value="40">40元/斤</option>
+                                <option value="50">50元/斤</option>
+                                <option value="60">60元/斤</option>
+                                <option value="70">70元/斤</option>
+                                <option value="80">80元/斤</option>
+                                <option value="90">90元/斤</option>
+                                <option value="100">100元/斤</option>
+                                <option value="110">110元/斤</option>
+                                <option value="120">120元/斤</option>
+                                <option value="130">130元/斤</option>
+                                <option value="140">140元/斤</option>
+                                <option value="150">150元/斤</option>
+                                <option value="160">160元/斤</option>
+                                <option value="170">170元/斤</option>
+                                <option value="180">180元/斤</option>
+                            </select>
+                        </div>
+                        <div class="quantity-select">
+                            <label for="quantity-gaoliang">选择数量（斤）：</label>
+                            <div class="quantity-controls">
+                                <button onclick="updateQuantitySelect(-1, 'gaoliang')">-</button>
+                                <button onclick="updateQuantitySelect(-10, 'gaoliang')">-10</button>
+                                <input type="number" id="quantity-gaoliang" value="1" min="1" onchange="updateQuantitySelect(0, 'gaoliang')">
+                                <button onclick="updateQuantitySelect(10, 'gaoliang')">+10</button>
+                                <button onclick="updateQuantitySelect(1, 'gaoliang')">+</button>
+                            </div>
+                        </div>
+                        <p id="total-price-gaoliang">总价：¥10</p>
+                        <button onclick="addToCart('高粱散装白酒', currentPriceGaoliang * currentQuantityGaoliang)">加入待购</button>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">谷子酒</div>
+                        <h3>选择规格</h3>
+                        <div class="price-select">
+                            <label for="price-guzi">选择价格（元/斤）：</label>
+                            <select id="price-guzi" onchange="updatePrice(this.value, 'guzi')">
+                                <option value="10">10元/斤</option>
+                                <option value="20">20元/斤</option>
+                                <option value="30">30元/斤</option>
+                                <option value="40">40元/斤</option>
+                                <option value="50">50元/斤</option>
+                                <option value="60">60元/斤</option>
+                                <option value="70">70元/斤</option>
+                                <option value="80">80元/斤</option>
+                                <option value="90">90元/斤</option>
+                                <option value="100">100元/斤</option>
+                                <option value="110">110元/斤</option>
+                                <option value="120">120元/斤</option>
+                                <option value="130">130元/斤</option>
+                                <option value="140">140元/斤</option>
+                                <option value="150">150元/斤</option>
+                                <option value="160">160元/斤</option>
+                                <option value="170">170元/斤</option>
+                                <option value="180">180元/斤</option>
+                            </select>
+                        </div>
+                        <div class="quantity-select">
+                            <label for="quantity-guzi">选择数量（斤）：</label>
+                            <div class="quantity-controls">
+                                <button onclick="updateQuantitySelect(-1, 'guzi')">-</button>
+                                <button onclick="updateQuantitySelect(-10, 'guzi')">-10</button>
+                                <input type="number" id="quantity-guzi" value="1" min="1" onchange="updateQuantitySelect(0, 'guzi')">
+                                <button onclick="updateQuantitySelect(10, 'guzi')">+10</button>
+                                <button onclick="updateQuantitySelect(1, 'guzi')">+</button>
+                            </div>
+                        </div>
+                        <p id="total-price-guzi">总价：¥10</p>
+                        <button onclick="addToCart('谷子散装白酒', currentPriceGuzi * currentQuantityGuzi)">加入待购</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 宴席用酒 -->
+            <div class="product-category">
+                <h3>宴席用酒</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">喜宴用酒</div>
+                        <h3>喜宴专用酒</h3>
+                        <button onclick="showContactInfo()">选择样式</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">白事用酒</div>
+                        <h3>白事专用酒</h3>
+                        <button onclick="showContactInfo()">选择样式</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 粮食代加工 -->
+            <div class="product-category">
+                <h3>粮食代加工</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">高粱酒</div>
+                        <h3>高粱酒定制</h3>
+                        <p class="custom-details">自带粮食或向我们购买均可</p>
+                        <p class="custom-price">具体价格面议</p>
+                        <button onclick="showContactInfo()">联系我们</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">谷子酒</div>
+                        <h3>谷子酒定制</h3>
+                        <p class="custom-details">自带粮食或向我们购买均可</p>
+                        <p class="custom-price">具体价格面议</p>
+                        <button onclick="showContactInfo()">联系我们</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="contact-container">
+                <h2>联系我们</h2>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> 联系电话： 13679012222  /  13683441560</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 地址： 四川省成都市都江堰市青城山镇民兴社区下兴街308号</p>
+                    <p><i class="fas fa-phone"></i> 微信： 13679012222  /  13683441560</p>
+                    <p><i class="fas fa-clock"></i> 营业时间： 每天 6:00-21:00</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cart" class="section">
+            <h2>待购商品</h2>
+            <div class="cart-container">
+                <div class="cart-list" id="cart-items">
+                    <!-- 购物车为空时显示 -->
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>您的购物车还是空的</p>
+                        <a href="#products" class="shop-now-btn">去选购</a>
+                    </div>
+                </div>
+                <div class="cart-total" id="cart-total">总计: ¥0</div>
+                <div class="submit-order">
+                    <button class="submit-order-btn" onclick="showOrderModal()">
+                        <i class="fas fa-check"></i>
+                        提交订单
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 添加订单提交模态框 -->
+        <div id="order-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="hideModal('order-modal')">&times;</span>
+                <h3>订单信息</h3>
+                <form id="order-form" onsubmit="submitOrder(event)">
+                    <div class="form-group">
+                        <label for="order-name">收货人姓名：</label>
+                        <input type="text" id="order-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-phone">联系电话：</label>
+                        <input type="tel" id="order-phone" pattern="[0-9]{11}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-address">收货地址：</label>
+                        <textarea id="order-address" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-note">订单备注：</label>
+                        <textarea id="order-note" placeholder="如有特殊要求请在此说明"></textarea>
+                    </div>
+                    <div class="order-summary">
+                        <h4>订单明细</h4>
+                        <div id="order-items"></div>
+                        <div id="order-total"></div>
+                    </div>
+                    <!-- 添加支付方式选择 -->
+                    <div class="payment-methods">
+                        <h4>选择支付方式</h4>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="alipay" checked>
+                                <span class="payment-icon"><i class="fab fa-alipay"></i></span>
+                                <span class="payment-name">支付宝</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="wechat">
+                                <span class="payment-icon"><i class="fab fa-weixin"></i></span>
+                                <span class="payment-name">微信支付</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">确认提交</button>
+                        <button type="button" class="cancel-btn" onclick="hideModal('order-modal')">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 添加支付状态模态框 -->
+        <div id="payment-modal" class="modal">
+            <div class="modal-content payment-content">
+                <span class="close" onclick="hideModal('payment-modal')">&times;</span>
+                <h3>订单支付</h3>
+                <div class="payment-status">
+                    <div class="payment-qrcode">
+                        <!-- 这里将显示支付二维码 -->
+                        <div id="qrcode"></div>
+                    </div>
+                    <div class="payment-info">
+                        <p class="payment-amount">支付金额: <span id="payment-amount">¥0</span></p>
+                        <p class="payment-order-id">订单号: <span id="payment-order-id"></span></p>
+                        <p class="payment-tip">请使用支付宝/微信扫码支付</p>
+                    </div>
+                    <div class="payment-actions">
+                        <button onclick="checkPaymentStatus()" class="check-payment-btn">
+                            <i class="fas fa-sync-alt"></i> 检查支付状态
+                        </button>
+                        <button onclick="cancelPayment()" class="cancel-payment-btn">
+                            取消支付
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="profile" class="section">
+            <div class="profile-container">
+                <h2>个人中心</h2>
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h3>个人信息</h3>
+                        </div>
+                        <div class="profile-info">
+                            <p><strong>用户名：</strong><span id="profile-username"></span></p>
+                            <p><strong>邮箱：</strong><span id="profile-email"></span></p>
+                            <p><strong>注册时间：</strong><span id="profile-created"></span></p>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="profile-logout-btn">退出登录</button>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <i class="fas fa-shopping-bag"></i>
+                            <h3>我的订单</h3>
+                        </div>
+                        <div id="profile-orders" class="profile-orders">
+                            <!-- 订单列表将通过 JavaScript 动态生成 -->
+                        </div>
+                    </div>
+                    <div class="profile-section">
+                        <h3>收货信息</h3>
+                        <div class="shipping-info">
+                            <p>默认收货人：<span id="shipping-name">未设置</span></p>
+                            <p>默认联系电话：<span id="shipping-phone">未设置</span></p>
+                            <p>默认收货地址：<span id="shipping-address">未设置</span></p>
+                        </div>
+                        <div class="shipping-info-edit">
+                            <button class="edit-shipping-btn" onclick="showEditShippingModal()">
+                                <i class="fas fa-edit"></i> 编辑收货信息
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>联系电话： 13679012222  /  13683441560</p>
+        <p>地址： 四川省成都市都江堰市青城山镇民兴社区下兴街308号</p>
+    </footer>
+
+    <!-- 添加登录模态框 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>登录</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div id="login-error" class="error-message"></div>
+                <button type="submit">登录</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 添加注册模态框 -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>注册</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label>用户名</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label>确认密码</label>
+                    <input type="password" name="confirmPassword" required>
+                </div>
+                <div id="register-error" class="error-message"></div>
+                <button type="submit">注册</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 在body标签结束前添加收货信息编辑模态框 -->
+    <div id="shipping-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal('shipping-modal')">&times;</span>
+            <h3>编辑收货信息</h3>
+            <form id="shipping-form" class="shipping-form" onsubmit="saveShippingInfo(event)">
+                <div class="form-group">
+                    <label for="edit-shipping-name">收货人姓名：</label>
+                    <input type="text" id="edit-shipping-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-shipping-phone">联系电话：</label>
+                    <input type="tel" id="edit-shipping-phone" pattern="[0-9]{11}" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-shipping-address">收货地址：</label>
+                    <input type="text" id="edit-shipping-address" required>
+                </div>
+                <div class="shipping-form-actions">
+                    <button type="button" class="cancel-shipping-btn" onclick="hideModal('shipping-modal')">取消</button>
+                    <button type="submit" class="save-shipping-btn">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html> 
