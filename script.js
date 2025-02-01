@@ -1372,7 +1372,7 @@ async function handlePayment(orderId, amount, paymentMethod) {
     }
 }
 
-// 显示支付二维码
+// 修改显示支付二维码函数
 function showPaymentModal(orderId, amount, paymentMethod) {
     const modal = document.getElementById('payment-modal');
     const qrcodeDiv = document.getElementById('qrcode');
@@ -1385,6 +1385,14 @@ function showPaymentModal(orderId, amount, paymentMethod) {
     // 更新支付信息
     amountSpan.textContent = `¥${amount}`;
     orderIdSpan.textContent = orderId;
+    
+    // 根据支付方式更新提示文本
+    const paymentTip = document.querySelector('.payment-tip');
+    if (paymentTip) {
+        paymentTip.textContent = paymentMethod === 'alipay' 
+            ? '请使用支付宝扫码支付' 
+            : '请使用微信扫码支付';
+    }
     
     // 生成支付二维码
     // 这里使用一个示例URL，实际项目中需要替换为真实的支付URL
